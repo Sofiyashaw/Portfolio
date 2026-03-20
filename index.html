@@ -3,108 +3,479 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acinta Sofiya | Data Scientist Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Acinta Sofiya | Data Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        body { background-color: #0f1115; color: white; scroll-behavior: smooth; }
-        .bento-card { background-color: #1a1c23; border: 1px solid #2d3139; border-radius: 24px; transition: transform 0.2s ease; }
-        .bento-card:hover { transform: translateY(-4px); border-color: #6366f1; }
-        .icon-box { background-color: #1a1c23; border: 1px solid #2d3139; border-radius: 16px; transition: 0.3s; }
-        .icon-box:hover { background-color: #2d3139; color: #6366f1; }
-        .tag { background-color: #24272f; border: 1px solid #3f444d; border-radius: 8px; font-size: 0.75rem; padding: 4px 10px; display: flex; align-items: center; gap: 6px; }
-        .gradient-text { background: linear-gradient(90deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .tech-item {
+        :root {
+            --bg:       #08090c;
+            --surface:  #10121a;
+            --surface2: #161923;
+            --border:   rgba(255,255,255,0.07);
+            --border-h: rgba(120,100,255,0.45);
+            --indigo:   #7c6cfc;
+            --violet:   #b98df8;
+            --cyan:     #4fd1c5;
+            --text:     #e2e8f0;
+            --muted:    #64748b;
+            --dim:      #94a3b8;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Noise overlay ─────────────────────────────── */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 0;
+        }
+
+        /* ── Ambient glow blobs ────────────────────────── */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .blob-1 { width: 600px; height: 600px; background: #5a4fcf; top: -150px; left: -200px; }
+        .blob-2 { width: 500px; height: 500px; background: #7c3aed; bottom: -100px; right: -150px; }
+        .blob-3 { width: 300px; height: 300px; background: #0ea5e9; top: 40%; left: 45%; }
+
+        /* ── Layout ────────────────────────────────────── */
+        .container {
+            position: relative; z-index: 1;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 48px 20px 80px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+
+        /* ── Card ──────────────────────────────────────── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at top left, rgba(124,108,252,0.06), transparent 60%);
+            pointer-events: none;
+        }
+        .card:hover {
+            border-color: var(--border-h);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(124,108,252,0.1);
+        }
+
+        .section-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-            background-color: #24272f;
-            border: 1px solid #3f444d;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── Column spans ──────────────────────────────── */
+        .col-4  { grid-column: span 4; }
+        .col-5  { grid-column: span 5; }
+        .col-6  { grid-column: span 6; }
+        .col-7  { grid-column: span 7; }
+        .col-8  { grid-column: span 8; }
+        .col-12 { grid-column: span 12; }
+
+        @media (max-width: 768px) {
+            .col-4, .col-5, .col-6, .col-7, .col-8, .col-12 { grid-column: span 12; }
+        }
+
+        /* ── Profile card ──────────────────────────────── */
+        .profile-card { display: flex; flex-direction: column; }
+        .avatar-wrap {
+            position: relative;
+            width: 88px; height: 88px;
+            margin-bottom: 24px;
+        }
+        .avatar-monogram {
+            width: 88px; height: 88px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #1a1730 0%, #221d40 100%);
+            border: 1px solid rgba(124,108,252,0.3);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .avatar-monogram span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px; font-weight: 700; font-style: italic;
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            letter-spacing: 0px;
+        }
+        .avatar-ring {
+            position: absolute; inset: -4px;
+            border-radius: 22px;
+            background: conic-gradient(from 90deg, var(--indigo), var(--violet), var(--cyan), var(--indigo));
+            z-index: -1;
+            animation: spin 6s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .name-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        .role-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--indigo);
+            background: rgba(124,108,252,0.1);
+            border: 1px solid rgba(124,108,252,0.25);
+            border-radius: 50px;
+            padding: 4px 12px;
+            margin-bottom: 16px;
+        }
+        .location-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 11px; color: var(--muted);
+            margin-bottom: 16px;
+        }
+        .tagline {
+            font-size: 13px; color: var(--dim); line-height: 1.65; font-style: italic;
+            border-left: 2px solid rgba(124,108,252,0.4);
+            padding-left: 14px;
+            margin-top: auto;
+        }
+
+        /* ── Summary card ──────────────────────────────── */
+        .summary-headline {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px; font-weight: 700; line-height: 1.35;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        .gradient-text {
+            background: linear-gradient(120deg, var(--indigo), var(--violet));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+        .tag {
+            font-size: 11px; font-weight: 500;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px; padding: 5px 12px;
+            color: var(--dim);
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .tag:hover { border-color: var(--indigo); color: #a5b4fc; }
+
+        .social-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .social-btn {
+            display: flex; align-items: center; justify-content: center;
+            aspect-ratio: 1;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            font-size: 18px;
+            color: var(--dim);
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+        }
+        .social-btn:hover { background: rgba(124,108,252,0.15); border-color: var(--indigo); color: #a5b4fc; transform: translateY(-2px); }
+        .social-btn.accent { color: var(--indigo); border-color: rgba(124,108,252,0.35); }
+
+        /* ── Projects ──────────────────────────────────── */
+        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }
+        .project-item {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 14px; padding: 20px;
+            transition: border-color 0.25s, transform 0.25s;
+            position: relative; overflow: hidden;
+        }
+        .project-item::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--indigo), var(--violet));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .project-item:hover { border-color: var(--border-h); transform: translateY(-3px); }
+        .project-item:hover::after { opacity: 1; }
+        .project-icon {
+            width: 36px; height: 36px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(124,108,252,0.1);
+            color: var(--indigo); font-size: 15px;
+            margin-bottom: 14px;
+        }
+        .project-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .project-desc { font-size: 11.5px; color: var(--muted); line-height: 1.6; }
+        .project-metric {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 10px; font-weight: 600; color: var(--cyan);
+            margin-top: 12px;
+            background: rgba(79,209,197,0.08);
+            border: 1px solid rgba(79,209,197,0.2);
+            border-radius: 6px; padding: 3px 8px;
+        }
+
+        /* ── Tech Stack ────────────────────────────────── */
+        .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        @media (max-width: 480px) { .tech-grid { grid-template-columns: repeat(2, 1fr); } }
+        .tech-item {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 12px; padding: 10px 14px;
+            font-size: 12px; font-weight: 500; color: var(--dim);
+            transition: border-color 0.2s, background 0.2s, color 0.2s;
+        }
+        .tech-item:hover { border-color: var(--indigo); background: rgba(124,108,252,0.08); color: #a5b4fc; }
+        .tech-item i { font-size: 14px; color: var(--indigo); width: 18px; text-align: center; flex-shrink: 0; }
+
+        /* ── Experience ────────────────────────────────── */
+        .exp-item + .exp-item { border-top: 1px solid var(--border); padding-top: 22px; margin-top: 22px; }
+        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+        .exp-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: #fff; }
+        .exp-date {
+            font-size: 10px; font-weight: 500;
+            background: rgba(124,108,252,0.12);
+            color: var(--indigo);
+            border: 1px solid rgba(124,108,252,0.2);
+            border-radius: 6px; padding: 3px 8px;
+            white-space: nowrap;
+        }
+        .exp-company { font-size: 11px; color: var(--indigo); margin-bottom: 8px; }
+        .exp-desc { font-size: 11.5px; color: var(--muted); line-height: 1.6; }
+
+        /* ── Education ─────────────────────────────────── */
+        .edu-degree { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+        .edu-school { font-size: 11.5px; color: var(--dim); line-height: 1.5; margin-bottom: 8px; }
+        .gpa-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 11px; font-weight: 600; color: var(--cyan);
+            background: rgba(79,209,197,0.08);
+            border: 1px solid rgba(79,209,197,0.2);
+            border-radius: 6px; padding: 4px 10px;
+        }
+
+        /* ── Certifications ────────────────────────────── */
+        .cert-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 14px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 10px 14px;
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: #cbd5e1;
-            transition: border-color 0.2s, background-color 0.2s;
+            margin-bottom: 10px;
+            transition: border-color 0.2s;
         }
-        .tech-item:hover {
-            border-color: #6366f1;
-            background-color: #2d2f3e;
-            color: #a5b4fc;
+        .cert-item:last-child { margin-bottom: 0; }
+        .cert-item:hover { border-color: var(--border-h); }
+        .cert-icon { color: var(--indigo); font-size: 13px; margin-top: 1px; flex-shrink: 0; }
+        .cert-text { font-size: 11.5px; color: var(--dim); line-height: 1.5; }
+        .cert-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 2px; }
+
+        /* ── Contact ───────────────────────────────────── */
+        .contact-card { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .contact-icon {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: rgba(124,108,252,0.12);
+            border: 1px solid rgba(124,108,252,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: var(--indigo);
+            margin-bottom: 16px;
         }
-        .tech-item i {
-            font-size: 0.95rem;
-            color: #818cf8;
-            width: 16px;
-            text-align: center;
-            flex-shrink: 0;
+        .contact-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+        .email-btn {
+            width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            color: #fff; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px;
+            letter-spacing: 0.05em; text-decoration: none;
+            padding: 13px 20px; border-radius: 12px;
+            transition: opacity 0.2s, transform 0.2s;
         }
+        .email-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+        /* ── Stats strip ───────────────────────────────── */
+        .stats-strip {
+            grid-column: span 12;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px 32px;
+            display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 20px;
+        }
+        .stat { text-align: center; }
+        .stat-num { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; background: linear-gradient(120deg, var(--indigo), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-top: 2px; }
+        .stat-divider { width: 1px; height: 40px; background: var(--border); }
+        @media (max-width: 600px) { .stat-divider { display: none; } }
+
+        /* ── Footer ────────────────────────────────────── */
+        footer { text-align: center; padding: 20px; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+
+        /* ── Entrance animation ────────────────────────── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .card { animation: fadeUp 0.5s ease both; }
+        .card:nth-child(1)  { animation-delay: 0.05s; }
+        .card:nth-child(2)  { animation-delay: 0.10s; }
+        .card:nth-child(3)  { animation-delay: 0.15s; }
+        .card:nth-child(4)  { animation-delay: 0.20s; }
+        .card:nth-child(5)  { animation-delay: 0.25s; }
+        .card:nth-child(6)  { animation-delay: 0.30s; }
+        .card:nth-child(7)  { animation-delay: 0.35s; }
+        .card:nth-child(8)  { animation-delay: 0.40s; }
+        .card:nth-child(9)  { animation-delay: 0.45s; }
+        .stats-strip { animation: fadeUp 0.5s ease 0.5s both; }
     </style>
 </head>
-<body class="p-4 md:p-10 font-sans text-slate-200">
+<body>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+    <!-- Ambient blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
 
-        <!-- Profile Card -->
-        <div class="md:col-span-4 bento-card p-8 flex flex-col items-start relative">
-            <span class="absolute top-6 right-6 text-[10px] bg-indigo-900/30 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/30 uppercase tracking-widest">
-                <i class="fa-solid fa-location-dot mr-1"></i> Chennai, India
-            </span>
-            <img src="Sofiya.jpeg" alt="Acinta Sofiya" class="w-24 h-24 rounded-2xl object-cover mb-6 border border-slate-700 shadow-xl shadow-indigo-500/10">
-            <h1 class="text-3xl font-bold mb-1 tracking-tight text-white">Acinta Sofiya</h1>
-            <p class="text-indigo-400 font-medium mb-4 uppercase text-xs tracking-widest">Data Scientist</p>
-            <p class="text-slate-400 text-sm leading-relaxed mb-6 italic">"Data Scientist who turns millions of messy rows into forecasts that move the needle — from churn to cross-sells to trade schemes."</p>
-            <div class="text-slate-500 text-xs space-y-3 mt-auto">
-                <p><i class="fa-solid fa-code text-indigo-500 mr-2"></i> End-to-End ML Specialist</p>
+    <div class="container">
+
+        <!-- ── Profile ──────────────────────────── -->
+        <div class="card col-4 profile-card">
+            <div class="avatar-wrap">
+                <div class="avatar-ring"></div>
+                <div class="avatar-monogram"><span>A</span></div>
             </div>
+            <h1 class="name-heading">Acinta<br>Sofiya</h1>
+            <div class="role-badge"><i class="fa-solid fa-circle" style="font-size:6px;color:var(--cyan)"></i> Data Scientist</div>
+            <div class="location-badge"><i class="fa-solid fa-location-dot" style="color:var(--indigo);font-size:11px"></i> Chennai, India</div>
+            <p class="tagline">"I architect ML systems that translate messy, high-volume data into decisions that drive revenue — not just reports."</p>
         </div>
 
-        <!-- Summary Card -->
-        <div class="md:col-span-8 bento-card p-8 flex flex-col justify-between">
+        <!-- ── Summary ──────────────────────────── -->
+        <div class="card col-8" style="display:flex;flex-direction:column;justify-content:space-between;">
             <div>
-                <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4">Executive Summary</h2>
-                <p class="text-xl md:text-2xl text-slate-200 leading-tight mb-6">
-                    Specializing in <span class="gradient-text font-bold">Time Series Forecasting</span> and ML pipelines, delivered scalable solutions for leading FMCG, retail, and manufacturing enterprises.
+                <div class="section-label">Executive Summary</div>
+                <p class="summary-headline">
+                    Building <span class="gradient-text">production-grade ML systems</span> that power forecasting, churn prevention, and intelligent cross-sell at enterprise scale across FMCG, retail &amp; manufacturing.
                 </p>
-                <div class="flex flex-wrap gap-2">
-                    <div class="tag">🤖 AI &amp; MLOps</div>
-                    <div class="tag">⚡ Python</div>
-                    <div class="tag">📈 Forecasting</div>
-                    <div class="tag">☁️ AWS</div>
+                <div class="tags">
+                    <span class="tag">🤖 MLOps &amp; Deployment</span>
+                    <span class="tag">⚡ Python · PySpark</span>
+                    <span class="tag">📈 Time Series Forecasting</span>
+                    <span class="tag">☁️ AWS SageMaker</span>
+                    <span class="tag">🔬 Reinforcement Learning</span>
+                    <span class="tag">🧠 LLM &amp; RAG</span>
                 </div>
             </div>
-            <div class="grid grid-cols-4 gap-4 mt-8">
-                <a href="https://github.com/Sofiyashaw" target="_blank" class="icon-box p-4 flex justify-center items-center text-xl"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/sofiya-datascientist/" target="_blank" class="icon-box p-4 flex justify-center items-center text-xl"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="Sofiya - Resume.pdf" target="_blank" class="icon-box p-4 flex justify-center items-center text-xl text-indigo-400 border-indigo-500/50"><i class="fa-solid fa-file-pdf"></i></a>
-                <a href="https://www.instagram.com/sofiyaaa_08/" target="_blank" class="icon-box p-4 flex justify-center items-center text-xl"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-        </div>
-
-        <!-- High-Impact Projects -->
-        <div class="md:col-span-12 bento-card p-8">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-6 text-white text-center">High-Impact Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="border-t border-slate-700 pt-4">
-                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Retail Churn System</h4>
-                    <p class="text-[11px] text-slate-400">Achieved 50% Precision and 62% Recall using XGBoost/Random Forest ensembles. Automated data mart eliminating 12 hours of manual work weekly.</p>
-                </div>
-                <div class="border-t border-slate-700 pt-4">
-                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Cross-Sell Engine</h4>
-                    <p class="text-[11px] text-slate-400">Modeled behaviors on 20M+ rows using Reinforcement Learning (Contextual Bandits). Increased Precision from 20% to 30%.</p>
-                </div>
-                <div class="border-t border-slate-700 pt-4">
-                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Trade Scheme Sales Forecasting</h4>
-                    <p class="text-[11px] text-slate-400">Transformed 30M+ rows in AWS SageMaker, boosting R² score from 0.82 to 0.90 through advanced feature engineering.</p>
-                </div>
+            <div class="social-row">
+                <a href="https://github.com/Sofiyashaw" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/sofiya-datascientist/" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="Sofiya - Resume.pdf" target="_blank" class="social-btn accent" title="Resume PDF"><i class="fa-solid fa-file-pdf"></i></a>
+                <a href="https://www.instagram.com/sofiyaaa_08/" target="_blank" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
 
-        <!-- Tech Stack — FIXED: separated SQL, Big Data, AI, LLM, RAG -->
-        <div class="md:col-span-7 bento-card p-8">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-5 text-white">Technical Ecosystem</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <!-- ── Stats strip ───────────────────────── -->
+        <div class="stats-strip">
+            <div class="stat">
+                <div class="stat-num">30M+</div>
+                <div class="stat-label">Rows Processed</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-num">0.90</div>
+                <div class="stat-label">Best R² Score</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-num">12h</div>
+                <div class="stat-label">Weekly Time Saved</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-num">20M+</div>
+                <div class="stat-label">RL Modeled Rows</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-num">+50%</div>
+                <div class="stat-label">Precision Uplift</div>
+            </div>
+        </div>
+
+        <!-- ── Projects ─────────────────────────── -->
+        <div class="card col-12">
+            <div class="section-label">High-Impact Projects</div>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-icon"><i class="fa-solid fa-users-slash"></i></div>
+                    <div class="project-title">Retail Churn Prediction System</div>
+                    <p class="project-desc">Designed an XGBoost / Random Forest ensemble with automated feature pipelines. Eliminated 12 hrs/week of manual data prep by building a self-refreshing data mart on top of raw transactional tables.</p>
+                    <div class="project-metric"><i class="fa-solid fa-chart-line"></i> 50% Precision · 62% Recall</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-icon"><i class="fa-solid fa-arrows-turn-right"></i></div>
+                    <div class="project-title">Contextual Bandit Cross-Sell Engine</div>
+                    <p class="project-desc">Deployed a Reinforcement Learning system (Contextual Bandits) trained on 20M+ customer interaction rows to serve personalised next-best-offer recommendations in near real time.</p>
+                    <div class="project-metric"><i class="fa-solid fa-chart-line"></i> Precision 20% → 30% (+50% lift)</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div class="project-title">Trade Scheme Sales Forecaster</div>
+                    <p class="project-desc">End-to-end SageMaker pipeline processing 30M+ rows of SKU-level sales data. Advanced lag features, holiday encodings, and scheme-uplift signals drove a step-change in model accuracy.</p>
+                    <div class="project-metric"><i class="fa-solid fa-chart-line"></i> R² 0.82 → 0.90</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Tech Stack ────────────────────────── -->
+        <div class="card col-7">
+            <div class="section-label">Technical Ecosystem</div>
+            <div class="tech-grid">
                 <div class="tech-item"><i class="fa-brands fa-python"></i> Python</div>
                 <div class="tech-item"><i class="fa-solid fa-bolt"></i> PySpark</div>
                 <div class="tech-item"><i class="fa-brands fa-aws"></i> AWS / SageMaker</div>
@@ -113,64 +484,73 @@
                 <div class="tech-item"><i class="fa-solid fa-layer-group"></i> Databricks</div>
                 <div class="tech-item"><i class="fa-brands fa-google"></i> GCP</div>
                 <div class="tech-item"><i class="fa-solid fa-gears"></i> MLOps / Docker</div>
-                <div class="tech-item"><i class="fa-solid fa-brain"></i> AI</div>
+                <div class="tech-item"><i class="fa-solid fa-brain"></i> AI / ML</div>
                 <div class="tech-item"><i class="fa-solid fa-robot"></i> LLM</div>
                 <div class="tech-item"><i class="fa-solid fa-magnifying-glass"></i> RAG</div>
             </div>
         </div>
 
-        <!-- Work Experience — with bullet points filled in -->
-        <div class="md:col-span-5 bento-card p-8">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-6 text-white">Work Experience</h2>
-            <div class="space-y-6">
-                <div>
-                    <div class="flex justify-between items-start mb-1">
-                        <h3 class="font-bold text-slate-100 text-sm">Data Scientist</h3>
-                        <span class="text-[10px] bg-indigo-900/20 text-indigo-400 px-2 py-1 rounded">05/2025 – 01/2026</span>
-                    </div>
-                    <p class="text-xs text-indigo-400 mb-2">Positive Integers Pvt Ltd</p>
-                    <ul class="text-[11px] text-slate-400 space-y-1 list-disc list-inside">
-                    </ul>
+        <!-- ── Experience ────────────────────────── -->
+        <div class="card col-5">
+            <div class="section-label">Work Experience</div>
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title">Data Scientist</div>
+                    <div class="exp-date">05/2025 – 01/2026</div>
                 </div>
-                <div class="border-t border-slate-800 pt-5">
-                    <div class="flex justify-between items-start mb-1">
-                        <h3 class="font-bold text-slate-100 text-sm">Analytics Intern</h3>
-                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">12/2024 – 04/2025</span>
-                    </div>
-                    <p class="text-xs text-indigo-400 mb-2">Positive Integers Pvt Ltd</p>
-                    <ul class="text-[11px] text-slate-400 space-y-1 list-disc list-inside">
-                    </ul>
+                <div class="exp-company">Positive Integers Pvt Ltd</div>
+                <p class="exp-desc">Led end-to-end ML development for FMCG and retail clients — from raw data ingestion on AWS to deployed forecasting and churn models serving business decisions at scale. Owned model monitoring, retraining pipelines, and stakeholder reporting.</p>
+            </div>
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-title">Analytics Intern → Data Scientist</div>
+                    <div class="exp-date">12/2024 – 04/2025</div>
+                </div>
+                <div class="exp-company">Positive Integers Pvt Ltd</div>
+                <p class="exp-desc">Joined as an intern and fast-tracked to a full role within five months. Built data pipelines in PySpark and Python, contributed to churn and cross-sell model prototypes, and automated weekly reporting that previously required 12 hours of manual effort.</p>
+            </div>
+        </div>
+
+        <!-- ── Education ─────────────────────────── -->
+        <div class="card col-4">
+            <div class="section-label">Education</div>
+            <div class="edu-degree">B.E. Computer Science &amp; Engineering</div>
+            <div class="edu-school">Jeppiaar Engineering College<br><span style="color:var(--muted)">Affiliated to Anna University</span></div>
+            <div class="gpa-badge"><i class="fa-solid fa-star" style="font-size:10px"></i> GPA 8.3 / 10</div>
+        </div>
+
+        <!-- ── Certifications ────────────────────── -->
+        <div class="card col-4">
+            <div class="section-label">Certifications</div>
+            <div class="cert-item">
+                <i class="fa-solid fa-certificate cert-icon"></i>
+                <div class="cert-text">
+                    <strong>PG Program — Data Analytics &amp; ML</strong>
+                    Imarticus Learning
+                </div>
+            </div>
+            <div class="cert-item">
+                <i class="fa-solid fa-certificate cert-icon"></i>
+                <div class="cert-text">
+                    <strong>Programming in Python</strong>
+                    Swayam (NPTEL)
                 </div>
             </div>
         </div>
 
-        <!-- Education -->
-        <div class="md:col-span-4 bento-card p-8">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4 text-white">Education</h2>
-            <p class="text-xs font-bold text-slate-100">B.E. Computer Science and Engineering</p>
-            <p class="text-[10px] text-slate-500 mb-1">Jeppiaar Engineering College (Affiliated to Anna University)</p>
-            <p class="text-[10px] text-slate-500">GPA 8.3 / 10</p>
-        </div>
-
-        <!-- Certifications -->
-        <div class="md:col-span-4 bento-card p-8">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4 text-white">Certifications</h2>
-            <ul class="text-[10px] text-slate-400 space-y-3">
-                <li><i class="fa-solid fa-certificate text-indigo-500 mr-2"></i> Postgraduate Program in Data Analytics and Machine Learning — Imarticus Learning</li>
-                <li><i class="fa-solid fa-certificate text-indigo-500 mr-2"></i> Programming in Python — Swayam</li>
-            </ul>
-        </div>
-
-        <!-- Contact -->
-        <div class="md:col-span-4 bento-card p-8 flex flex-col justify-center items-center text-center">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-3">Let's Connect</h2>
-            <p class="text-[11px] text-slate-400 mb-4">Available for technical collaborations and data science roles.</p>
-            <a href="/cdn-cgi/l/email-protection#ec8d8f8582988d9f838a85958ddcd4dcddac8b818d8580c28f8381" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2">
-                <i class="fa-solid fa-paper-plane"></i> Email Me
+        <!-- ── Contact ───────────────────────────── -->
+        <div class="card col-4 contact-card">
+            <div class="contact-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <div class="section-label" style="margin-bottom:8px">Let's Connect</div>
+            <p class="contact-desc">Open to senior data science roles, consulting engagements, and high-impact ML collaborations.</p>
+            <a href="/cdn-cgi/l/email-protection#ec8d8f8582988d9f838a85958ddcd4dcddac8b818d8580c28f8381" class="email-btn">
+                <i class="fa-solid fa-envelope"></i> Send me an email
             </a>
         </div>
 
     </div>
 
-    <footer class="mt-12 text-center text-slate-600 text-[9px] uppercase tracking-[0.3em] pb-10">
-        Engineered for Sofiya
+    <footer>Engineered for Sofiya &nbsp;·&nbsp; Data Scientist Portfolio</footer>
+
+</body>
+</html>
