@@ -19,7 +19,8 @@
 <body class="p-4 md:p-10 font-sans text-slate-200">
 
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
-        
+
+        <!-- Profile Card -->
         <div class="md:col-span-4 bento-card p-8 flex flex-col items-start relative">
             <span class="absolute top-6 right-6 text-[10px] bg-indigo-900/30 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/30 uppercase tracking-widest">
                 <i class="fa-solid fa-location-dot mr-1"></i> Chennai, India
@@ -27,26 +28,27 @@
             <img src="Sofiya.jpeg" alt="Acinta Sofiya" class="w-24 h-24 rounded-2xl object-cover mb-6 border border-slate-700 shadow-xl shadow-indigo-500/10">
             <h1 class="text-3xl font-bold mb-1 tracking-tight text-white">Acinta Sofiya</h1>
             <p class="text-indigo-400 font-medium mb-4 uppercase text-xs tracking-widest">Data Scientist</p>
-            <p class="text-slate-400 text-sm leading-relaxed mb-6 italic">"Transforming data into scalable AI solutions"</p>
-            
+            <p class="text-slate-400 text-sm leading-relaxed mb-6 italic">"Delivering scalable AI solutions for FMCG &amp; Manufacturing."</p>
+
             <div class="text-slate-500 text-xs space-y-3 mt-auto">
-                <p><i class="fa-solid fa-terminal text-indigo-500 mr-2"></i> 25+ Tech Interviews Conducted</p>
-                <p><i class="fa-solid fa-code text-indigo-500 mr-2"></i> Live by the Code</p>
+                <p><i class="fa-solid fa-terminal text-indigo-500 mr-2"></i> 25+ Technical Interviews Led</p>
+                <p><i class="fa-solid fa-code text-indigo-500 mr-2"></i> End-to-End ML Specialist</p>
                 <p><i class="fa-solid fa-plane text-indigo-500 mr-2"></i> Love traveling</p>
             </div>
         </div>
 
+        <!-- Summary Card -->
         <div class="md:col-span-8 bento-card p-8 flex flex-col justify-between">
             <div>
-                <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4">Professional Summary</h2>
+                <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4">Executive Summary</h2>
                 <p class="text-xl md:text-2xl text-slate-200 leading-tight mb-6">
                     Specializing in <span class="gradient-text font-bold">Time Series Forecasting</span> and ML pipelines, delivering scalable solutions for leading FMCG, retail, and manufacturing enterprises.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <div class="tag">🤖 AI & MLOps</div>
+                    <div class="tag">🤖 AI &amp; MLOps</div>
                     <div class="tag">⚡ PySpark</div>
-                    <div class="tag">📈 Scalability</div>
-                    <div class="tag">☁️ AWS/Azure</div>
+                    <div class="tag">📈 Forecasting</div>
+                    <div class="tag">☁️ AWS / GCP</div>
                 </div>
             </div>
 
@@ -58,84 +60,92 @@
             </div>
         </div>
 
+        <!-- High-Impact Projects -->
+        <div class="md:col-span-12 bento-card p-8">
+            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-6 text-white text-center">High-Impact Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="border-t border-slate-700 pt-4">
+                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Retail Churn System</h4>
+                    <p class="text-[11px] text-slate-400">Achieved 50% Precision and 62% Recall using XGBoost/Random Forest ensembles. Automated data mart eliminating 12 hours of manual work weekly.</p>
+                </div>
+                <div class="border-t border-slate-700 pt-4">
+                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Cross-Sell Engine</h4>
+                    <p class="text-[11px] text-slate-400">Modeled behaviors on 20M+ rows using Reinforcement Learning (Contextual Bandits). Increased Precision from 20% to 30%.</p>
+                </div>
+                <div class="border-t border-slate-700 pt-4">
+                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Trade Scheme Sales Forecasting</h4>
+                    <p class="text-[11px] text-slate-400">Transformed 30M+ rows in AWS SageMaker, boosting R² score from 0.82 to 0.90 through advanced feature engineering.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
         <div class="md:col-span-7 bento-card p-8">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-6 text-white">Experience</h2>
-            <div class="space-y-8">
+            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-6 text-white">Technical Ecosystem</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-4">
+                <div class="flex items-center gap-2 text-[11px]"><i class="fa-brands fa-python text-indigo-500"></i> Python</div>
+                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-bolt text-indigo-500"></i> PySpark</div>
+                <div class="flex items-center gap-2 text-[11px]"><i class="fa-brands fa-aws text-indigo-500"></i> AWS / SageMaker</div>
+                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-database text-indigo-500"></i> SQL / Big Data</div>
+                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-layer-group text-indigo-500"></i> Databricks</div>
+                <div class="flex items-center gap-2 text-[11px]"><i class="fa-brands fa-google text-indigo-500"></i> GCP</div>
+                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-gears text-indigo-500"></i> MLOps / Docker</div>
+                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-robot text-indigo-500"></i> AI / LLM / RAG</div>
+            </div>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="md:col-span-5 bento-card p-8">
+            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-6 text-white">Work Experience</h2>
+            <div class="space-y-6">
                 <div>
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-bold text-slate-100">Positive Integers Pvt Ltd</h3>
-                        <span class="text-[10px] bg-indigo-900/20 text-indigo-400 px-2 py-1 rounded">May 2025 – Jan 2026</span>
+                    <div class="flex justify-between items-start mb-1">
+                        <h3 class="font-bold text-slate-100 text-sm">Data Scientist</h3>
+                        <span class="text-[10px] bg-indigo-900/20 text-indigo-400 px-2 py-1 rounded">2025 – Present</span>
                     </div>
-                    <p class="text-xs text-indigo-400 mb-2">Data Scientist</p>
+                    <p class="text-xs text-indigo-400 mb-2">Positive Integers Pvt Ltd</p>
                     <ul class="text-[11px] text-slate-400 space-y-1 list-disc list-inside">
                         <li>Directed lifecycle of 6+ analytics projects.</li>
                         <li>Drove ROPS increase from 2.0 to 6.4 via feature engineering.</li>
                     </ul>
                 </div>
                 <div>
-                    <div class="flex justify-between items-start mb-2 text-white">
-                        <h3 class="font-bold text-slate-100">Positive Integers Pvt Ltd</h3>
-                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">Dec 2024 – April 2025</span>
+                    <div class="flex justify-between items-start mb-1">
+                        <h3 class="font-bold text-slate-100 text-sm">Analytics Intern</h3>
+                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">2024 – 2025</span>
                     </div>
-                    <p class="text-xs text-indigo-400 mb-2">Analytics Intern</p>
+                    <p class="text-xs text-indigo-400 mb-2">Positive Integers Pvt Ltd</p>
                     <ul class="text-[11px] text-slate-400 space-y-1 list-disc list-inside">
-                        <li>Reduced data anomalies by 30% via API extraction systems.</li>
-                        <li>Achieved R2 improvement from 0.70 to 0.81 in forecasting models.</li>
+                        <li>Reduced data anomalies by 30% via API automation.</li>
+                        <li>Improved R² from 0.70 to 0.81 in forecasting models.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="md:col-span-5 bento-card p-8">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-6 text-white">Tech Stack</h2>
-            <div class="grid grid-cols-2 gap-y-4 gap-x-2">
-                <div class="flex items-center gap-2 text-[11px]"><i class="fa-brands fa-python text-indigo-500"></i> Python / PySpark</div>
-                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-database text-indigo-500"></i> SQL / Big Data</div>
-                <div class="flex items-center gap-2 text-[11px]"><i class="fa-brands fa-aws text-indigo-500"></i> AWS / SageMaker</div>
-                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-flask text-indigo-500"></i> Scikit-learn</div>
-                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-gears text-indigo-500"></i> MLOps / Docker</div>
-                <div class="flex items-center gap-2 text-[11px]"><i class="fa-solid fa-chart-line text-indigo-500"></i> Tableau / BI</div>
-            </div>
-        </div>
-
-        <div class="md:col-span-12 bento-card p-8">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-6 text-white text-center">Project Impact</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="border-t border-slate-700 pt-4">
-                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Cross-Sell Engine</h4>
-                    <p class="text-[11px] text-slate-400">Modeled 20M+ rows using Reinforcement Learning. Increased Precision from 20% to 30%.</p>
-                </div>
-                <div class="border-t border-slate-700 pt-4 text-white">
-                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Retail Churn Prediction</h4>
-                    <p class="text-[11px] text-slate-400">Automated data mart eliminating 12 hours of manual work weekly. 62% Recall achieved.</p>
-                </div>
-                <div class="border-t border-slate-700 pt-4">
-                    <h4 class="text-sm font-bold text-indigo-400 mb-2">Trade Scheme Sales</h4>
-                    <p class="text-[11px] text-slate-400">Transformed 30M+ rows in AWS SageMaker, boosting R2 from 0.82 to 0.90.</p>
-                </div>
-            </div>
-        </div>
-
+        <!-- Education -->
         <div class="md:col-span-4 bento-card p-8">
             <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4 text-white">Education</h2>
-            <p class="text-xs font-bold">Jeppiaar Engineering College</p>
-            <p class="text-[10px] text-slate-500 mb-4">B.E. Computer Science | GPA 8.3/10</p>
-            <p class="text-xs font-bold">Imarticus Learning</p>
-            <p class="text-[10px] text-slate-500">PGP Data Analytics & ML</p>
+            <p class="text-xs font-bold text-slate-100">B.E. Computer Science</p>
+            <p class="text-[10px] text-slate-500 mb-1">Anna University</p>
+            <p class="text-[10px] text-slate-500">GPA 8.3 / 10</p>
         </div>
 
-        <div class="md:col-span-4 bento-card p-8 text-white">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4">Certifications</h2>
+        <!-- Certifications -->
+        <div class="md:col-span-4 bento-card p-8">
+            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4 text-white">Certifications</h2>
             <ul class="text-[10px] text-slate-400 space-y-3">
-                <li><i class="fa-solid fa-certificate text-indigo-500 mr-2"></i> Generative AI - GeeksforGeeks</li>
-                <li><i class="fa-solid fa-certificate text-indigo-500 mr-2"></i> Programming in Python - Swayam</li>
+                <li><i class="fa-solid fa-certificate text-indigo-500 mr-2"></i> Generative AI – GeeksforGeeks</li>
+                <li><i class="fa-solid fa-certificate text-indigo-500 mr-2"></i> Programming in Python – Swayam</li>
             </ul>
         </div>
 
+        <!-- Contact -->
         <div class="md:col-span-4 bento-card p-8 flex flex-col justify-center items-center text-center">
-            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-4">Get in Touch</h2>
-            <a href="mailto:acintasofiya0801@gmail.com" class="w-full bg-white text-black py-3 rounded-xl font-bold text-xs hover:bg-slate-200 transition">
-                <i class="fa-solid fa-envelope mr-2"></i> acintasofiya0801@gmail.com
+            <h2 class="text-slate-500 text-[10px] font-bold tracking-widest uppercase mb-3">Let's Connect</h2>
+            <p class="text-[11px] text-slate-400 mb-4">Available for technical collaborations and data leadership roles.</p>
+            <a href="mailto:acintasofiya0801@gmail.com" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Email Me
             </a>
         </div>
 
