@@ -3,103 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acinta Sofiya | Data Scientist</title>
+    <title>Acinta Sofiya | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #0f1115; color: #e2e8f0; }
-        .bento-card { background-color: #1a1d23; border: 1px solid #2d3139; border-radius: 1.5rem; }
-        .accent-text { color: #6366f1; }
-        .tag { background-color: #2d3139; font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; display: flex; align-items: center; gap: 0.5rem; }
+        body { background-color: #0f1115; color: white; }
+        .bento-card { background-color: #1a1c23; border: 1px solid #2d3139; border-radius: 24px; }
+        .icon-box { background-color: #1a1c23; border: 1px solid #2d3139; border-radius: 16px; transition: 0.3s; }
+        .icon-box:hover { background-color: #2d3139; }
+        .tag { background-color: #24272f; border: 1px solid #3f444d; border-radius: 8px; font-size: 0.75rem; padding: 4px 10px; display: flex; align-items: center; gap: 6px; }
     </style>
 </head>
-<body class="p-4 md:p-8 font-sans">
+<body class="p-4 md:p-10 font-sans">
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
         
-        <div class="md:col-span-4 bento-card p-8 flex flex-col justify-center relative overflow-hidden">
-            <div class="absolute top-6 right-6 bg-slate-800 text-[10px] px-3 py-1 rounded-full text-indigo-400 font-bold border border-indigo-500/30">
-                <i class="fa-solid fa-location-dot"></i> CHENNAI
+        <div class="md:col-span-4 bento-card p-8 flex flex-col items-start relative">
+            <span class="absolute top-6 right-6 text-xs bg-indigo-900/30 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/30">
+                <i class="fa-solid fa-location-dot mr-1"></i> Chennai [cite: 3]
+            </span>
+            <img src="Sofiya.jpeg" alt="Sofiya" class="w-28 h-28 rounded-full object-cover mb-6 border-2 border-slate-700">
+            <h1 class="text-3xl font-bold mb-1">Acinta Sofiya [cite: 1]</h1>
+            <p class="text-indigo-500 font-medium mb-4">Data Scientist [cite: 2]</p>
+            <p class="text-slate-400 text-sm mb-4 italic">"Transforming data into scalable AI solutions" [cite: 6]</p>
+            <div class="text-slate-500 text-xs space-y-2">
+                <p><i class="fa-solid fa-code text-indigo-500 mr-2"></i> Live by the Code</p>
+                <p><i class="fa-solid fa-plane text-indigo-500 mr-2"></i> Love traveling</p>
             </div>
-            <h1 class="text-4xl font-extrabold tracking-tight mt-4">Acinta Sofiya</h1>
-            <p class="accent-text font-semibold text-lg mt-1">Data Scientist</p>
-            <p class="text-slate-400 mt-4 italic text-sm">"Driven by Data, Scaled by AI"</p>
         </div>
 
         <div class="md:col-span-8 bento-card p-8">
-            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">About Me</h3>
-            <p class="text-lg leading-relaxed">
-                Data Scientist specializing in <strong>Time Series Forecasting, Machine Learning, and AI</strong>. I deliver scalable solutions for FMCG, retail, and manufacturing enterprises by building automated data pipelines and production-ready forecasting systems.
+            <h2 class="text-slate-500 text-xs font-bold tracking-widest uppercase mb-4">About Me</h2>
+            <p class="text-lg text-slate-300 leading-relaxed mb-6">
+                Data Scientist specializing in **Time Series Forecasting, Machine Learning, and AI**, delivering scalable solutions for leading FMCG, retail, and manufacturing enterprises[cite: 6]. Experienced in end-to-end ML model development and automated data pipelines[cite: 7].
             </p>
-            <div class="flex flex-wrap gap-3 mt-6">
-                <span class="tag"><i class="fa-solid fa-brain text-purple-400"></i> AI & ML</span>
-                <span class="tag"><i class="fa-solid fa-chart-line text-blue-400"></i> Forecasting</span>
-                <span class="tag"><i class="fa-solid fa-database text-orange-400"></i> Big Data</span>
+            <div class="flex flex-wrap gap-3">
+                <div class="tag"><span class="text-purple-400">🤖</span> AI & MLOps [cite: 20, 29]</div>
+                <div class="tag"><span class="text-orange-400">⚡</span> PySpark [cite: 19]</div>
+                <div class="tag"><span class="text-blue-400">📈</span> Scalability [cite: 6]</div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-4 mt-10">
+                <a href="https://github.com/Sofiyashaw" class="icon-box p-4 flex justify-center items-center text-xl hover:text-indigo-400"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/sofiya-datascientist/" class="icon-box p-4 flex justify-center items-center text-xl hover:text-indigo-400"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="Sofiya - Resume.pdf" target="_blank" class="icon-box p-4 flex justify-center items-center text-xl hover:text-indigo-400"><i class="fa-solid fa-file-pdf"></i></a>
+                <a href="https://www.instagram.com/sofiyaaa_08/" class="icon-box p-4 flex justify-center items-center text-xl hover:text-pink-400"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
 
         <div class="md:col-span-6 bento-card p-8">
-            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Experience</h3>
+            <h2 class="text-slate-500 text-xs font-bold tracking-widest uppercase mb-6">Experience</h2>
             <div class="space-y-6">
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h4 class="font-bold text-lg text-white">Positive Integers Pvt Ltd</h4>
-                        <span class="text-[10px] bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded">2025 - 2026</span>
+                <div class="flex justify-between items-start group">
+                    <div>
+                        <h3 class="font-bold text-slate-200">Positive Integers Pvt Ltd [cite: 10]</h3>
+                        <p class="text-sm text-slate-500">Data Scientist [cite: 10]</p>
                     </div>
-                    <p class="text-sm text-slate-400">Data Scientist</p>
+                    <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">2025 - 2026 [cite: 21]</span>
                 </div>
-                <div>
-                    <div class="flex justify-between items-start">
-                        <h4 class="font-bold text-lg text-white">Positive Integers Pvt Ltd</h4>
-                        <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">2024 - 2025</span>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-bold text-slate-200">Positive Integers Pvt Ltd [cite: 13]</h3>
+                        <p class="text-sm text-slate-500">Analytics Intern [cite: 13]</p>
                     </div>
-                    <p class="text-sm text-slate-400">Analytics Intern</p>
+                    <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded">2024 - 2025 [cite: 22]</span>
                 </div>
             </div>
         </div>
 
-        <div class="md:col-span-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="https://github.com/Sofiyashaw" class="bento-card flex items-center justify-center text-3xl hover:bg-slate-800 transition"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/sofiya-datascientist/" class="bento-card flex items-center justify-center text-3xl hover:bg-slate-800 transition"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#" class="bento-card flex items-center justify-center text-3xl hover:bg-slate-800 transition"><i class="fa-solid fa-file-pdf text-sm mr-2"></i>CV</a>
-            <div class="bento-card flex items-center justify-center text-3xl"><i class="fa-brands fa-instagram text-slate-600"></i></div>
+        <div class="md:col-span-3 bento-card p-8">
+            <h2 class="text-slate-500 text-xs font-bold tracking-widest uppercase mb-6">Education</h2>
+            <h3 class="font-bold text-slate-200 text-sm">Jeppiaar Engineering College [cite: 44]</h3>
+            <p class="text-xs text-slate-500 mb-4">B.E. Computer Science (2021-2025) [cite: 44, 49]</p>
+            <h3 class="font-bold text-slate-200 text-sm">Imarticus Learning [cite: 46]</h3>
+            <p class="text-xs text-slate-500">PGP Data Analytics [cite: 46]</p>
         </div>
 
-        <div class="md:col-span-4 bento-card p-8">
-            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Education</h3>
+        <div class="md:col-span-3 bento-card p-8">
+            <h2 class="text-slate-500 text-xs font-bold tracking-widest uppercase mb-6">Certifications</h2>
             <div class="space-y-4">
-                <div>
-                    <h4 class="font-bold text-white leading-tight">Jeppiaar Engineering College</h4>
-                    <p class="text-xs text-slate-400 mt-1">B.E. Computer Science (2021-2025)</p>
-                    <p class="text-xs accent-text mt-1 font-mono">GPA: 8.3/10</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
+                    <p class="text-xs text-slate-300">Generative AI - GFG [cite: 48]</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-graduation-cap text-slate-500 text-xs"></i>
+                    <p class="text-xs text-slate-300">Python - Swayam [cite: 47]</p>
                 </div>
             </div>
         </div>
 
-        <div class="md:col-span-4 bento-card p-8">
-            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Certifications</h3>
-            <ul class="text-sm space-y-3">
-                <li class="flex items-center gap-2 text-slate-300"><i class="fa-solid fa-certificate text-indigo-500"></i> PGP in Data Analytics</li>
-                <li class="flex items-center gap-2 text-slate-300"><i class="fa-solid fa-certificate text-indigo-500"></i> Generative AI - GFG</li>
-            </ul>
-        </div>
-
-        <div class="md:col-span-4 bento-card p-8">
-            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Tech Stack</h3>
-            <div class="grid grid-cols-2 gap-y-4 gap-x-2 text-xs font-medium text-slate-300">
-                <div class="flex items-center gap-2"><i class="fa-brands fa-python text-blue-400"></i> Python</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-database text-orange-400"></i> SQL / PySpark</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-cloud text-sky-400"></i> AWS / GCP</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-gears text-green-400"></i> MLOps</div>
+        <div class="md:col-span-8 bento-card p-8">
+            <h2 class="text-slate-500 text-xs font-bold tracking-widest uppercase mb-6">Tech Stack</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="flex items-center gap-2 text-sm text-slate-400"><i class="fa-brands fa-python text-indigo-400"></i> Python [cite: 19]</div>
+                <div class="flex items-center gap-2 text-sm text-slate-400"><i class="fa-solid fa-database text-indigo-400"></i> SQL/Big Data [cite: 19, 25]</div>
+                <div class="flex items-center gap-2 text-sm text-slate-400"><i class="fa-brands fa-aws text-indigo-400"></i> AWS/GCP [cite: 26]</div>
+                <div class="flex items-center gap-2 text-sm text-slate-400"><i class="fa-solid fa-flask text-indigo-400"></i> Scikit-learn [cite: 28]</div>
+                <div class="flex items-center gap-2 text-sm text-slate-400"><i class="fa-solid fa-gears text-indigo-400"></i> MLOps [cite: 30]</div>
+                <div class="flex items-center gap-2 text-sm text-slate-400"><i class="fa-solid fa-bolt text-indigo-400"></i> Apache Spark [cite: 19]</div>
+                <div class="flex items-center gap-2 text-sm text-slate-400"><i class="fa-brands fa-linux text-indigo-400"></i> Docker [cite: 30]</div>
+                <div class="flex items-center gap-2 text-sm text-slate-400"><i class="fa-solid fa-chart-simple text-indigo-400"></i> Tableau/BI [cite: 32]</div>
             </div>
         </div>
 
-        <div class="md:col-span-12 bento-card p-4 text-center">
-            <a href="mailto:acintasofiya0801@gmail.com" class="bg-white text-black font-bold py-3 px-8 rounded-xl inline-flex items-center gap-3 hover:bg-slate-200 transition">
-                <i class="fa-solid fa-envelope"></i> acintasofiya0801@gmail.com
+        <div class="md:col-span-4 bento-card p-8 flex flex-col justify-center">
+            <h2 class="text-slate-500 text-xs font-bold tracking-widest uppercase mb-6">Get in Touch</h2>
+            <a href="mailto:acintasofiya0801@gmail.com" class="bg-white text-black py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-slate-200 transition">
+                <i class="fa-solid fa-envelope"></i> acintasofiya0801@gmail.com [cite: 3]
             </a>
         </div>
 
     </div>
+
+    <footer class="mt-10 text-center text-slate-600 text-[10px] uppercase tracking-widest">
+        Designed for Sofiya • 2026
+    </footer>
+
 </body>
 </html>
